@@ -1,71 +1,134 @@
 <template>
-    <main>
-        <Headerimage :source="'/image1.jpg'"/>
-        <div data-aos="fade-up"
-            data-aos-duration="2000">
-            <section>
-                <h1>{{ title }}</h1>
-                <p>Juegos</p>
-            </section>
-            <section class="container cards-section">
-                <ArticleCard
-                v-for="(article,index) in articles"
-                :key="index"
-                :article="article"
-                />
-            </section>
-        </div>
-    </main>
-</template>
+    <div><NavBar /></div>
+    <div><Carousel /></div>
 
-<script setup>
-    import { ref } from "vue";
-    const title = ref('Página de inicio');
-    const articles = ref([
-        {
-            id: 1,
-            title: "Artículo 1",
-            url: "https://fastly.picsum.photos/id/945/500/200.jpg?hmac=oFOpI3Af3hCz4rDutDUj4av0cDUur5ZPnCJsTgOJ-kc"
-        },
-        {
-            id: 2,
-            title: "Artículo 2",
-            url: "https://fastly.picsum.photos/id/851/500/200.jpg?hmac=idfq8ep-hvo-kkeHfN83YiziwCeQgKve6k52i2r7C4I"
-        },
-        {
-            id: 3,
-            title: "Artículo 3",
-            url: "https://fastly.picsum.photos/id/610/500/200.jpg?hmac=qubB6O6C4OveunofKS9_lDhEZ-VW18Vbl9jnjCFDUCE"
-        },
-        {
-            id: 4,
-            title: "Artículo 4",
-            url: "https://fastly.picsum.photos/id/63/500/200.jpg?hmac=mL1JDDKbE9hR1_5pbgu32crz91HE2CKBFO3RkN2tAxs"
-        },
-        
-    ]);
-</script>
+  <h1>Bienvenid@ a la Comunidad de Steam</h1>
 
-<style lang="postcss">
-    main{
-        padding: 20px;
-    }
-    h1{
-        font-size: 45px;
-        font-weight: bold;
-        color: rgb(43, 43, 43);
-        padding-top: 20px;
-        padding-bottom: 20px;
-        font-family: Roboto;
-    }
-    p{
-        font-size: 25px;
-        color: rgb(43, 43, 43);
-        padding-bottom: 15px;
-    }
-    .cards-section{
-        display: flex;
-        justify-content: space-between;
-    }
+  <div><Banner /></div>
 
-</style>
+  <div><ArticleCard_1 /></div>
+  <div><ArticleCard_2 /></div>
+  <div><ArticleCard_1_1 /></div>
+  <div><ArticleCard_3 /></div>
+  <div><Footer /></div>
+
+  </template>
+  
+  <script>
+  import ArticleCard_1 from '~/components/ArticleCard_1.vue';
+  import ArticleCard_2 from '~/components/ArticleCard_2.vue';
+  import ArticleCard_1_1 from '~/components/ArticleCard_1_1.vue';
+  import ArticleCard_3 from '~/components/ArticleCard_3.vue';
+  import Footer from '~/components/Footer.vue'
+
+  export default {
+    data() {
+      return {
+        searchQuery: '',
+        selectedLanguage: 'es',
+        showLoginModal: false,
+        username: '',
+        password: ''
+      }
+    },
+    methods: {
+      search() {
+        console.log('Búsqueda realizada:', this.searchQuery)
+      },
+      login() {
+        console.log('Inicio de sesión:', this.username, this.password)
+        this.showLoginModal = false
+      }
+    },
+    components: {
+    Footer
+  }
+  }
+
+  </script>
+  
+  <style postcss>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2B2B2B;
+    color: #DEDEDE;
+    padding: 22px;
+    gap: 4px;
+  }
+
+  h1 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 10px;
+}
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links a {
+    color: #DEDEDE;
+    text-decoration: none;
+  }
+  
+  .search-bar input {
+    padding: 5px;
+  }
+  
+  .search-bar button {
+    padding: 5px 10px;
+  }
+  
+  .language-selector select {
+    padding: 5px;
+  }
+  
+  .login-btn button {
+    padding: 5px 10px;
+  }
+  
+  /* Estilos para el modal */
+  .modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #DEDEDE;
+    margin: 3% auto;
+    padding: 20px;
+    border-radius: 15px;
+    width: 800px;
+    height: 600px;
+  }
+  
+  .close {
+    color: #2B2B2B;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  </style>

@@ -10,9 +10,15 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.18",
     "@nuxtjs/tailwindcss": "^6.12.0",
+    "bootstrap": "^5.3.3",
     "nuxt": "^3.11.2",
+    "nuxt-icons": "^3.2.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vuex": "^4.1.0"
   }
 }
